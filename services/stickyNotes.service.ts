@@ -51,10 +51,7 @@ export const updateStickyNotesService = async (req: Request, res: Response, next
 
 // Delete StickyNote
 export const deleteStickyNotesService = async (req: Request, res: Response, next: NextFunction) => {
-	const { id } = req.params;
-
-	console.log(id);
-	
+	const { id } = req.params;	
 	const stickyNote = await stickyNotesModel.findById(id);
 
 	if(!stickyNote) return next(new ErrorHandler("Oops, Sticky Note you are looking for is already deleted...!", 404));

@@ -240,8 +240,6 @@ export const createActivationTokenService = (user: any): IActivationToken => {
 
 // User Change Password Service
 export const changePasswordService = async (req: any, res: Response, next: NextFunction) => {
-
-    console.log(req.body);
     const { id, oldPassword, newPassword } = req.body as IChangePassword;
 
     if(!oldPassword || !newPassword) return next(new ErrorHandler("Please enter your old and new password...!", 400));
