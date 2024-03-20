@@ -67,8 +67,8 @@ export const userRegistrationService = async(req: Request, res: Response, next: 
 
     const { data } = req.body;
 
-    const isEmailExists = await userModel.findOne( data.email );
-    
+    const isEmailExists = await userModel.findOne( { userEmail: data.userEmail } );
+
     if(isEmailExists) return next(new ErrorHandler("Email is Already been Taken...!", 400));
 
     const user: IRegistrationBody = data;

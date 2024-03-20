@@ -7,14 +7,14 @@ import { Response, Request, NextFunction } from "express";
 // Middleware
 import { CatchAsyncError } from "../middleware/catchAsyncErrors";
 // Services
-import { getAllStickyNotesService, createStickyNotesService, updateStickyNotesService, deleteStickyNotesService } from "../services/stickyNotes.service";
+import { getAllStickyNotesService, createStickyNotesService, updateStickyNotesService, deleteStickyNotesService, getStickyNoteService } from "../services/stickyNotes.service";
 
 
 // Get All Sticky Notes Of User
 export const getAllStickyNotesOfUser = CatchAsyncError(async (req: Request, res: Response, next: NextFunction) => {
 	try
 	{
-		getAllStickyNotesService(res);
+		getAllStickyNotesService(req, res, next);
 	}
 	catch (error: any)
 	{
@@ -23,12 +23,23 @@ export const getAllStickyNotesOfUser = CatchAsyncError(async (req: Request, res:
 });
 
 
+// Get One Sticky Note Of User
+export const getStickyNoteOfUser = CatchAsyncError(async (req: Request, res: Response, next: NextFunction) => {
+	try
+	{
+		getStickyNoteService(req, res, next);
+	}
+	catch (error: any)
+	{
+		return next(new ErrorHandler(error.message, 500));
+	}
+});
+
 // Create Sticky Note of User
 export const createStickyNote = CatchAsyncError(async (req: Request, res: Response, next: NextFunction) => {
 	try
 	{
-		const data = req.body;
-		createStickyNotesService(data, res, next);
+		createStickyNotesService(req, res, next);
 	}
 	catch (error: any)
 	{
@@ -41,8 +52,7 @@ export const createStickyNote = CatchAsyncError(async (req: Request, res: Respon
 export const updateStickyNote = CatchAsyncError(async (req: Request, res: Response, next: NextFunction) => {
 	try
 	{
-		const { id, noteTitle, noteText } = req.body;
-		updateStickyNotesService(id, noteTitle, noteText, res);
+		updateStickyNotesService(req, res, next);
 	}
 	catch (error: any)
 	{
@@ -55,8 +65,7 @@ export const updateStickyNote = CatchAsyncError(async (req: Request, res: Respon
 export const deleteStickyNote = CatchAsyncError(async (req: Request, res: Response, next: NextFunction) => {
     try
     {
-        const { id } = req.params;
-        deleteStickyNotesService(id, res, next);
+        deleteStickyNotesService(req, res, next);
     }
     catch (error: any)
     {

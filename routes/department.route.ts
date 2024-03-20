@@ -2,7 +2,7 @@
 import express from "express";
 // Custom Controllers
 import { authorizeRoles, isAuthenticated } from "../middleware/auth";
-import { getAllDepartments, createDepartment, updateDepartment, deleteDepartment } from "../controllers/department.controller";
+import { getAllDepartments, createDepartment, updateDepartment, deleteDepartment, getDepartmentById } from "../controllers/department.controller";
 
 const departmentRouter = express.Router();
 
@@ -10,6 +10,7 @@ const departmentAppend = '/department';
 const deleteAppend = '/delete';
 
 // Get Requests
+departmentRouter.get(`${departmentAppend}/:id`, isAuthenticated, getDepartmentById);
 departmentRouter.get(`${departmentAppend}/all`, isAuthenticated, authorizeRoles("admin"), getAllDepartments);
 
 // Post Requests
