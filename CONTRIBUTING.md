@@ -38,9 +38,9 @@ git push origin feature-name
 
 ---
 ## Code Style and Formatting
-> Follow the existing code style and formatting conventions in the project.
-> Use meaningful variable names and comments to improve code readability.
-> Ensure your code editor is configured to match the project's coding style (e.g., using EditorConfig, ESLint, or Prettier).
+- Follow the existing code style and formatting conventions in the project.
+- Use meaningful variable names and comments to improve code readability.
+- Ensure your code editor is configured to match the project's coding style (e.g., using EditorConfig, ESLint, or Prettier).
 
 ---
 ## License
