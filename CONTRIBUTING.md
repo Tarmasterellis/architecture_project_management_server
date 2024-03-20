@@ -12,7 +12,7 @@
 1. Fork the repository to your GitHub account.
 2. Clone the forked repository to your local machine.
 ```bash
-git clone https://github.com/your-username/repository.git
+git clone https://github.com/Tarmasterellis/architecture_project_management_server.git
 ```
 3. Create a new branch for your contribution.
 ```bash
@@ -48,7 +48,7 @@ git push origin feature-name
 
 ---
 ## Contact
-- If you have any questions or need further assistance, feel free to contact Ellis Sanjay Tarmaster at ellis.tarmaster@example.com.
+- If you have any questions or need further assistance, feel free to contact Ellis Sanjay Tarmaster at ellis0078@gmail.com.
 
 
-### Thank you for your contributions! :joy:
+### Thank you for your contributions!
