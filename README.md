@@ -7,8 +7,8 @@
 ### Requirements
 
 	- Module Description
- 		- [X] Users
-   		- [X] Departments
+ 		- [x] Users
+   		- [x] Departments
 		- [ ] To do List
 			- [ ] Master to do list
 			- [ ] Project to do list
@@ -28,7 +28,7 @@
 			- [ ] WhatsApp
 
 		- [ ] General
-			- [X] Sticky notes
+			- [x] Sticky notes
 			- [ ] Favourites
 			- [ ] Downloads
 
