@@ -9,7 +9,9 @@ import cookieParser from "cookie-parser";
 // Middleware
 import { ErrorMiddleware } from './middleware/error';
 // Routes
+import userRouter from "./routes/user.route";
 import departmentRouter from "./routes/department.route";
+import stickyNoteRouter from "./routes/stickyNotes.route";
 // Express
 import { rateLimit } from 'express-rate-limit';
 import express, { Request, Response, NextFunction } from "express";
@@ -43,7 +45,8 @@ const limiter = rateLimit({
 });
 
 // Routes
-app.use("/api/v1", departmentRouter);
+app.use("/api/v1", userRouter, departmentRouter, stickyNoteRouter);
+// app.use("/api/v1", stickyNoteRouter);
 
 // test API
 app.get("/test", (req: Request, res:Response, next:NextFunction) => {
