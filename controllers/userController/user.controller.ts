@@ -1,13 +1,13 @@
 // .ENV File Import
 require("dotenv").config();
 // Error Handlers
-import ErrorHandler from "../utils/ErrorHandler";
+import ErrorHandler from "../../utils/ErrorHandler";
 // Next JS
 import { Response, Request, NextFunction } from "express";
 // Middleware
-import { CatchAsyncError } from "../middleware/catchAsyncErrors";
+import { CatchAsyncError } from "../../middleware/catchAsyncErrors";
 // Services
-import { createUsersService, updateUserService, deleteUserService, loginUserService, logoutUserService, updateAccessTokenService, getUserByIdService, getAllUserService, updateUserRoleService, userActivationService, createActivationTokenService, userRegistrationService, changePasswordService } from "../services/user.service";
+import { createUsersService, updateUserService, deleteUserService, loginUserService, logoutUserService, updateAccessTokenService, getUserByIdService, getAllUserService, updateUserRoleService, userActivationService, createActivationTokenService, userRegistrationService, changePasswordService } from "../../services/userServices/user.service";
 
 
 // Get User Information

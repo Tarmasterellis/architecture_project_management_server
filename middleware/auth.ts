@@ -8,10 +8,10 @@ import ErrorHandler from "../utils/ErrorHandler";
 import { CatchAsyncError } from "./catchAsyncErrors";
 // Next JS
 import { Response, Request, NextFunction } from "express";
-// Access Token Refresh Import --Controller
-import { updateAccessToken } from "../controllers/user.controller";
 // Services
-import { returnUserByIdService } from "../services/user.service";
+import { returnUserByIdService } from "../services/userServices/user.service";
+// Access Token Refresh Import --Controller
+import { updateAccessToken } from "../controllers/userController/user.controller";
 
 // User Authentication
 export const isAuthenticated = CatchAsyncError(async (req: Request, res: Response, next: NextFunction) => {

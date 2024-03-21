@@ -1,13 +1,13 @@
 // .ENV File Import
 require("dotenv").config();
 // Error Handlers
-import ErrorHandler from "../utils/ErrorHandler";
+import ErrorHandler from "../../../utils/ErrorHandler";
 // Next JS
 import { Response, Request, NextFunction } from "express";
 // Middleware
-import { CatchAsyncError } from "../middleware/catchAsyncErrors";
+import { CatchAsyncError } from "../../../middleware/catchAsyncErrors";
 // Services
-import { getAllDepartmentService, createDepartmentService, updateDepartmentNameService, deleteDepartmentService, getDepartmentByIdService } from "../services/department.service";
+import { getAllDepartmentService, createDepartmentService, updateDepartmentNameService, deleteDepartmentService, getDepartmentByIdService } from "../../../services/userServices/DependentServices/department.service";
 
 
 // Get All Departments

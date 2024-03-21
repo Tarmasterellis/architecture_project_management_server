@@ -1,11 +1,11 @@
 // Error Handlers
-import ErrorHandler from "../utils/ErrorHandler";
+import ErrorHandler from "../../../utils/ErrorHandler";
 // Models
-import departmentModel from "../models/department.model";
+import departmentModel from "../../../models/userModels/DependentModels/department.model";
 // Express
 import { NextFunction, Response, Request } from "express";
 // Custom Async Error Middleware
-import { CatchAsyncError } from "../middleware/catchAsyncErrors";
+import { CatchAsyncError } from "../../../middleware/catchAsyncErrors";
 
 
 // Get All Departments

@@ -3,7 +3,7 @@ require("dotenv").config();
 // Next JS
 import { Response } from "express";
 // Models
-import { IUser } from "../models/users.model";
+import { IUser } from "../models/userModels/users.model";
 
 // Token Interface
 interface ITokenOptions {
