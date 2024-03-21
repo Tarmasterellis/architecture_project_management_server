@@ -1,13 +1,13 @@
 // Error Handlers
-import ErrorHandler from "../utils/ErrorHandler";
+import ErrorHandler from "../../utils/ErrorHandler";
 // Express
 import { NextFunction, Request, Response } from "express";
 // Services
-import { updateUserService } from "./user.service";
-// Models
-import stickyNotesModel, { IStickyNotes } from "../models/stickyNotes.model";
+import { updateUserService } from "../userServices/user.service";
 // Custom Async Error Middleware
-import { CatchAsyncError } from "../middleware/catchAsyncErrors";
+import { CatchAsyncError } from "../../middleware/catchAsyncErrors";
+// Models
+import stickyNotesModel, { IStickyNotes } from "../../models/stickyNoteModels/stickyNotes.model";
 
 
 // Get All Stick Note of user

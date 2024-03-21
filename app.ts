@@ -9,9 +9,9 @@ import cookieParser from "cookie-parser";
 // Middleware
 import { ErrorMiddleware } from './middleware/error';
 // Routes
-import userRouter from "./routes/user.route";
-import departmentRouter from "./routes/department.route";
-import stickyNoteRouter from "./routes/stickyNotes.route";
+import userRouter from "./routes/userRoutes/user.route";
+import stickyNoteRouter from "./routes/stickyNoteRoutes/stickyNotes.route";
+import departmentRouter from "./routes/userRoutes/DependentRoutes/department.route";
 // Express
 import { rateLimit } from 'express-rate-limit';
 import express, { Request, Response, NextFunction } from "express";

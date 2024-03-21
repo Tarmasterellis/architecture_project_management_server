@@ -72,6 +72,7 @@ export interface IUser extends Document {
 	isVerified: boolean;
 	userDepartmentId: {departmentId: string};
 	userStickyNotes: Array<{stickyNoteId: string}>;
+	userProjectId: Array<{projectId: string}>;
 	comparePassword: (userPasswordHash: string) => Promise<boolean>;
 	SignInAccessToken: () => string;
 	SignInRefreshToken: () => string;
@@ -134,7 +135,8 @@ const userSchema: Schema<IUser> = new mongoose.Schema({
 		default: false
 	},
 	userDepartmentId: {departmentId: String},
-	userStickyNotes: [{stickyNoteId: String}]
+	userStickyNotes: [{stickyNoteId: String}],
+	userProjectId: [{projectId: String}]
 }, {timestamps: true});
 
 // Hashing Password before saving

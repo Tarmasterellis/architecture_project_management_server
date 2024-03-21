@@ -1,5 +1,3 @@
-// .ENV File Import
-require("dotenv").config();
 // Mongoose Import
 import mongoose, { Document, Schema, Model } from "mongoose";
 

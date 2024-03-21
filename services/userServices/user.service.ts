@@ -3,19 +3,19 @@ import ejs from "ejs";
 // Path Module
 import path  from "path";
 // Utilities
-import sendMail from "../utils/sendMail";
+import sendMail from "../../utils/sendMail";
 // Error Handlers
-import ErrorHandler from "../utils/ErrorHandler";
+import ErrorHandler from "../../utils/ErrorHandler";
 // JWT Imports
 import jwt, { JwtPayload, Secret } from "jsonwebtoken";
 // Express
 import { NextFunction, Response, Request } from "express";
 // Custom Async Error Middleware
-import { CatchAsyncError } from "../middleware/catchAsyncErrors";
+import { CatchAsyncError } from "../../middleware/catchAsyncErrors";
 // JWT Token
-import { accessTokenOptions, refreshTokenOptions, sendToken } from "../utils/jwt";
+import { accessTokenOptions, refreshTokenOptions, sendToken } from "../../utils/jwt";
 // Models
-import userModel, { IUser, IUserLoginRequest, IActivationRequest, IRegistrationBody, IActivationToken, IChangePassword } from "../models/users.model";
+import userModel, { IUser, IUserLoginRequest, IActivationRequest, IRegistrationBody, IActivationToken, IChangePassword } from "../../models/userModels/users.model";
 
 
 // Get All users -- Admin Access Only

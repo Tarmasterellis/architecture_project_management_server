@@ -1,13 +1,13 @@
 // .ENV File Import
 require("dotenv").config();
 // Error Handlers
-import ErrorHandler from "../utils/ErrorHandler";
+import ErrorHandler from "../../utils/ErrorHandler";
 // Next JS
 import { Response, Request, NextFunction } from "express";
 // Middleware
-import { CatchAsyncError } from "../middleware/catchAsyncErrors";
+import { CatchAsyncError } from "../../middleware/catchAsyncErrors";
 // Services
-import { getAllStickyNotesService, createStickyNotesService, updateStickyNotesService, deleteStickyNotesService, getStickyNoteService } from "../services/stickyNotes.service";
+import { getAllStickyNotesService, createStickyNotesService, updateStickyNotesService, deleteStickyNotesService, getStickyNoteService } from "../../services/stickyNoteServices/stickyNotes.service";
 
 
 // Get All Sticky Notes Of User
