@@ -10,8 +10,8 @@ import { CatchAsyncError } from "../middleware/catchAsyncErrors";
 
 // Get All Departments
 export const getAllDepartmentService = async ( res: Response ) => {
-    const departments = await departmentModel.find().sort({createdAt: -1});
-    res.status(201).json({ success: true, departments, });
+	const departments = await departmentModel.find().sort({createdAt: -1});
+	res.status(201).json({ success: true, departments, });
 }
 
 
@@ -34,8 +34,8 @@ export const createDepartmentService = CatchAsyncError(async ( data: any, res: R
 
 // update Department
 export const updateDepartmentNameService = async (id: string, departmentName: string, res: Response) => {
-    const department = await departmentModel.findByIdAndUpdate(id, { departmentName }, { new: true });
-    res.status(201).json({ success: true, department, });
+	const department = await departmentModel.findByIdAndUpdate(id, { departmentName }, { new: true });
+	res.status(201).json({ success: true, department, });
 }
 
 

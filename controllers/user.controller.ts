@@ -12,21 +12,21 @@ import { createUsersService, updateUserService, deleteUserService, loginUserServ
 
 // Get User Information
 export const getUserInfo = CatchAsyncError(async (req: Request, res: Response, next: NextFunction) => {
-    try
-    {
-        getUserByIdService(req, res, next);
-    }
-    catch (error: any)
-    {
-        return next(new ErrorHandler(error.message, 400));
-    }
+	try
+	{
+		getUserByIdService(req, res, next);
+	}
+	catch (error: any)
+	{
+		return next(new ErrorHandler(error.message, 400));
+	}
 });
 
 
 // Get All Users --- Admin Access Only
 export const getAllUsers = CatchAsyncError(async (req: Request, res: Response, next: NextFunction) => {
-    try { getAllUserService(res); }
-    catch (error: any) { return next(new ErrorHandler(error.message, 400)); }
+	try { getAllUserService(res); }
+	catch (error: any) { return next(new ErrorHandler(error.message, 400)); }
 });
 
 
@@ -60,34 +60,34 @@ export const updateUser = CatchAsyncError(async (req: Request, res: Response, ne
 
 // Delete User
 export const deleteUser = CatchAsyncError(async (req: Request, res: Response, next: NextFunction) => {
-    try
-    {
-        const { id } = req.params;
-        deleteUserService(id, res, next);
-    }
-    catch (error: any)
-    {
-        return next(new ErrorHandler(error.message, 400));
-    }
+	try
+	{
+		const { id } = req.params;
+		deleteUserService(id, res, next);
+	}
+	catch (error: any)
+	{
+		return next(new ErrorHandler(error.message, 400));
+	}
 });
 
 
 // Registration of User
 export const userRegistration = CatchAsyncError(async (req: Request, res: Response, next: NextFunction) => {
-    try
-    {
-        userRegistrationService(req, res, next)
-    }
-    catch(error: any)
-    {
-        return next(new ErrorHandler(error.message, 400));
-    }
+	try
+	{
+		userRegistrationService(req, res, next)
+	}
+	catch(error: any)
+	{
+		return next(new ErrorHandler(error.message, 400));
+	}
 });
 
 
 // User Login
 export const userLogin = CatchAsyncError(async (req: Request, res: Response, next: NextFunction) => {
-    try
+	try
 	{
 		loginUserService(req, res, next);
 	}
@@ -100,65 +100,65 @@ export const userLogin = CatchAsyncError(async (req: Request, res: Response, nex
 
 // User Logout
 export const userLogout = CatchAsyncError(async (req: Request, res: Response, next: NextFunction) => {
-    try
-    {
-        logoutUserService(req.body, res, next);
-    }
-    catch (error: any)
-    {
-        return next(new ErrorHandler(error.message, 400));
-    }
+	try
+	{
+		logoutUserService(req.body, res, next);
+	}
+	catch (error: any)
+	{
+		return next(new ErrorHandler(error.message, 400));
+	}
 });
 
 
 // Update Access Token
 export const updateAccessToken = CatchAsyncError(async (req: Request, res: Response, next: NextFunction) => {
-    try
-    {
+	try
+	{
 		updateAccessTokenService(req, res, next);
-    }
-    catch (error: any)
-    {
-        return next(new ErrorHandler(error.message, 400));
-    }
+	}
+	catch (error: any)
+	{
+		return next(new ErrorHandler(error.message, 400));
+	}
 });
 
 
 // Update User Roles --- Admin Access Only
 export const updateUserRole = CatchAsyncError(async (req: Request, res: Response, next: NextFunction) => {
-    try
-    {
-        updateUserRoleService(req, res, next)
-    }
-    catch (error: any)
-    {
-        return next(new ErrorHandler(error.message, 400));
-    }
+	try
+	{
+		updateUserRoleService(req, res, next)
+	}
+	catch (error: any)
+	{
+		return next(new ErrorHandler(error.message, 400));
+	}
 });
 
 
 // Activation of User
 export const userActivation = CatchAsyncError(async (req: Request, res: Response, next: NextFunction) => {
-    try
-    {
-        userActivationService(req, res, next);
-    }
-    catch (error: any)
-    {
-        return next(new ErrorHandler(error.message, 400));
-    }
+	try
+	{
+		userActivationService(req, res, next);
+	}
+	catch (error: any)
+	{
+		return next(new ErrorHandler(error.message, 400));
+	}
 });
 
 
 
 // Update User Password
 export const changePassword = CatchAsyncError(async (req: Request, res: Response, next: NextFunction) => {
-    try
-    {
+	try
+	{
 		changePasswordService(req, res, next);
-    }
-    catch (error: any)
-    {
-        return next(new ErrorHandler(error.message, 400));
-    }
+	}
+	catch (error: any)
+	{
+		return next(new ErrorHandler(error.message, 400));
+	}
 });

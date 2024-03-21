@@ -10,10 +10,10 @@
 
 2. **Submit a Report**: To report a security vulnerability, please send an email to security@example.com with the following details:
 
-    - Description of the vulnerability.
-    - Steps to reproduce the vulnerability.
-    - Impact of the vulnerability.
-    - Any additional information or details that may be helpful.
+	- Description of the vulnerability.
+	- Steps to reproduce the vulnerability.
+	- Impact of the vulnerability.
+	- Any additional information or details that may be helpful.
 
 3. **Encryption**: If possible, encrypt your email using our PGP key.
 

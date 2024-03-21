@@ -63,12 +63,12 @@ export const updateStickyNote = CatchAsyncError(async (req: Request, res: Respon
 
 // Delete Sticky Note of User
 export const deleteStickyNote = CatchAsyncError(async (req: Request, res: Response, next: NextFunction) => {
-    try
-    {
-        deleteStickyNotesService(req, res, next);
-    }
-    catch (error: any)
-    {
-        return next(new ErrorHandler(error.message, 400));
-    }
+	try
+	{
+		deleteStickyNotesService(req, res, next);
+	}
+	catch (error: any)
+	{
+		return next(new ErrorHandler(error.message, 400));
+	}
 });
