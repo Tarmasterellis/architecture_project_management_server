@@ -17,132 +17,132 @@ const passwordRegexPattern: RegExp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*
 
 // User Login Interface
 export interface IUserLoginRequest {
-    userName: string;
-    userPasswordHash: string;
+	userName: string;
+	userPasswordHash: string;
 }
 
 // Activation of User Interface
 export interface IActivationRequest {
-    activation_token: string;
-    activation_code: string;
+	activation_token: string;
+	activation_code: string;
 }
 
 
 // Registration of User Interface
 export interface IRegistrationBody {
-    userFullName: string;
-    userDOB?: Date;
-    userDOJ?: Date;
-    role: string;
-    userName: string;
-    userEmail: string;
-    userPasswordHash: string;
-    userSalt: string;
-    userProfilePhoto?: string;
-    isVerified: boolean;
+	userFullName: string;
+	userDOB?: Date;
+	userDOJ?: Date;
+	role: string;
+	userName: string;
+	userEmail: string;
+	userPasswordHash: string;
+	userSalt: string;
+	userProfilePhoto?: string;
+	isVerified: boolean;
 }
 
 
 // Activation Token Generation Interface
 export interface IActivationToken {
-    token: string;
-    activationCode: string;
+	token: string;
+	activationCode: string;
 }
 
 
 // Update User Password Interface
 export interface IChangePassword {
-    id: string;
-    oldPassword: string;
-    newPassword: string;
+	id: string;
+	oldPassword: string;
+	newPassword: string;
 }
 
 
 // User Interface
 export interface IUser extends Document {
 	userFullName: string;
-    userDOB: Date;
-    userDOJ: Date;
-    role: string;
-    userName: string;
-    userEmail: string;
-    userPasswordHash: string;
-    userSalt: string;
-    userProfilePhoto: string;
-    isVerified: boolean;
-    userDepartmentId: {departmentId: string};
-    userStickyNotes: Array<{stickyNoteId: string}>;
-    comparePassword: (userPasswordHash: string) => Promise<boolean>;
-    SignInAccessToken: () => string;
-    SignInRefreshToken: () => string;
+	userDOB: Date;
+	userDOJ: Date;
+	role: string;
+	userName: string;
+	userEmail: string;
+	userPasswordHash: string;
+	userSalt: string;
+	userProfilePhoto: string;
+	isVerified: boolean;
+	userDepartmentId: {departmentId: string};
+	userStickyNotes: Array<{stickyNoteId: string}>;
+	comparePassword: (userPasswordHash: string) => Promise<boolean>;
+	SignInAccessToken: () => string;
+	SignInRefreshToken: () => string;
 }
 
 // Schema Class
 const userSchema: Schema<IUser> = new mongoose.Schema({
 	userFullName: {
 		type: String,
-        index: true,
+		index: true,
 	},
-    userDOB: {
+	userDOB: {
 		type: Date,
 	},
-    userDOJ: {
+	userDOJ: {
 		type: Date,
 	},
-    role: {
-        type: String,
-        default: "user",
-        index: true
-    },
-    userName: {
-        type: String,
-        index: { unique: true },
-        required: [true, "Please Enter Your Username...!"]
-    },
-    userEmail: {
-        type: String,
-        required: [true, "Please Enter your Email Address...!"],
-        validate: {
-            validator: function(value: string)
-            {
-                return emailRegexPattern.test(value)
-            },
-            message: "Please Enter A Valid Email Address...!",
-        },
-        unique: true
-    },
-    userPasswordHash: {
-        type: String,
-        minlength: [8, "A valid Password Contains Minimum eight characters...!"],
-        validate: {
-            validator: function(value: string)
-            {
-                return passwordRegexPattern.test(value)
-            },
-            message: "Please Enter A Valid Password...!\nA valid Password Contains\n\nMinimum eight characters\nAt least one uppercase letter\nOne lowercase letter\nOne number\nOne special character",
-        },
-        select: false,
-    },
-    userSalt: {
-        type: String
-    },
-    userProfilePhoto: {
-        type: String
-    },
-    isVerified : {
-        type: Boolean,
-        default: false
-    },
-    userDepartmentId: {departmentId: String},
-    userStickyNotes: [{stickyNoteId: String}]
+	role: {
+		type: String,
+		default: "user",
+		index: true
+	},
+	userName: {
+		type: String,
+		index: { unique: true },
+		required: [true, "Please Enter Your Username...!"]
+	},
+	userEmail: {
+		type: String,
+		required: [true, "Please Enter your Email Address...!"],
+		validate: {
+			validator: function(value: string)
+			{
+				return emailRegexPattern.test(value)
+			},
+			message: "Please Enter A Valid Email Address...!",
+		},
+		unique: true
+	},
+	userPasswordHash: {
+		type: String,
+		minlength: [8, "A valid Password Contains Minimum eight characters...!"],
+		validate: {
+			validator: function(value: string)
+			{
+				return passwordRegexPattern.test(value)
+			},
+			message: "Please Enter A Valid Password...!\nA valid Password Contains\n\nMinimum eight characters\nAt least one uppercase letter\nOne lowercase letter\nOne number\nOne special character",
+		},
+		select: false,
+	},
+	userSalt: {
+		type: String
+	},
+	userProfilePhoto: {
+		type: String
+	},
+	isVerified : {
+		type: Boolean,
+		default: false
+	},
+	userDepartmentId: {departmentId: String},
+	userStickyNotes: [{stickyNoteId: String}]
 }, {timestamps: true});
 
 // Hashing Password before saving
 userSchema.pre<IUser>('save', async function(next) {
-    if(!this.isModified('userPasswordHash')) next();
-    this.userPasswordHash = await bcrypt.hash(this.userPasswordHash, 10);
-    this.userSalt = await crypto.randomBytes(16).toString('hex');
-    next();
+	if(!this.isModified('userPasswordHash')) next();
+	this.userPasswordHash = await bcrypt.hash(this.userPasswordHash, 10);
+	this.userSalt = await crypto.randomBytes(16).toString('hex');
+	next();
 });
 
 // Sign-In Access Token

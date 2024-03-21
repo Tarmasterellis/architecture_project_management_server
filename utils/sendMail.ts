@@ -5,38 +5,38 @@ import nodemailer, { Transporter } from 'nodemailer';
 
 
 interface EmailOptions {
-    email: string;
-    subject: string;
-    template: string;
-    data: {[key: string] : any};
+	email: string;
+	subject: string;
+	template: string;
+	data: {[key: string] : any};
 }
 
 
 const sendMail = async (options: EmailOptions): Promise <void> => {
-    const transporter: Transporter = nodemailer.createTransport({
-        host: process.env.SMTP_HOST,
-        port: parseInt(process.env.SMTP_PORT || '587'),
-        service: process.env.SMTP_SERVICE,
-        auth: {
-            user: process.env.SMTP_MAIL,
-            pass: process.env.SMTP_PASSWORD,
-        },
-    });
+	const transporter: Transporter = nodemailer.createTransport({
+		host: process.env.SMTP_HOST,
+		port: parseInt(process.env.SMTP_PORT || '587'),
+		service: process.env.SMTP_SERVICE,
+		auth: {
+			user: process.env.SMTP_MAIL,
+			pass: process.env.SMTP_PASSWORD,
+		},
+	});
 
-    const { email, subject, template, data } = options;
+	const { email, subject, template, data } = options;
 
-    const templatePath = path.join(__dirname, '../mails', template);
-    // const templatePath = path.join(__dirname, '../mails/activation-mail.ejs', template);
+	const templatePath = path.join(__dirname, '../mails', template);
+	// const templatePath = path.join(__dirname, '../mails/activation-mail.ejs', template);
 
-    const html:string = await ejs.renderFile(templatePath, data);
+	const html:string = await ejs.renderFile(templatePath, data);
 
-    const emailOptions = {
-        from: process.env.SMTP_EMAIL,
-        to: email,
-        subject,
-        html,
-    };
-    await transporter.sendMail(emailOptions);
+	const emailOptions = {
+		from: process.env.SMTP_EMAIL,
+		to: email,
+		subject,
+		html,
+	};
+	await transporter.sendMail(emailOptions);
 }
 
 export default sendMail;

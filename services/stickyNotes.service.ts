@@ -14,7 +14,7 @@ import { CatchAsyncError } from "../middleware/catchAsyncErrors";
 export const getAllStickyNotesService = async (req: Request, res: Response, next: NextFunction ) => {
 	const userId = req.body.user?._id;
 	const stickyNotes = await stickyNotesModel.find({ userId }).sort({createdAt: -1});
-    res.status(201).json({ success: true, stickyNotes, });
+	res.status(201).json({ success: true, stickyNotes, });
 }
 
 
@@ -22,7 +22,7 @@ export const getAllStickyNotesService = async (req: Request, res: Response, next
 export const getStickyNoteService = async (req: Request, res: Response, next: NextFunction ) => {
 	const { id } = req.params;
 	const stickyNotes = await stickyNotesModel.findById(id);
-    res.status(201).json({ success: true, stickyNotes, });
+	res.status(201).json({ success: true, stickyNotes, });
 }
 
 
