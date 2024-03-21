@@ -11,7 +11,10 @@ import { ErrorMiddleware } from './middleware/error';
 // Routes
 import userRouter from "./routes/userRoutes/user.route";
 import stickyNoteRouter from "./routes/stickyNoteRoutes/stickyNotes.route";
+import typeRouter from "./routes/projectRoutes/DependentRoutes/type.route";
+import categoryRouter from "./routes/projectRoutes/DependentRoutes/category.route";
 import departmentRouter from "./routes/userRoutes/DependentRoutes/department.route";
+import drawingStageRouter from "./routes/projectRoutes/DependentRoutes/drawingStage.route";
 // Express
 import { rateLimit } from 'express-rate-limit';
 import express, { Request, Response, NextFunction } from "express";
@@ -45,7 +48,7 @@ const limiter = rateLimit({
 });
 
 // Routes
-app.use("/api/v1", userRouter, departmentRouter, stickyNoteRouter);
+app.use("/api/v1", userRouter, departmentRouter, stickyNoteRouter, categoryRouter, typeRouter, drawingStageRouter);
 // app.use("/api/v1", stickyNoteRouter);
 
 // test API
