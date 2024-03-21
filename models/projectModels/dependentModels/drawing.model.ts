@@ -1,15 +1,13 @@
 // Mongoose Import
 import mongoose, { Document, Schema, Model } from "mongoose";
-// Model Imports
-import taskSchema, { ITask } from "./task.model";
 
 // Interface
 export interface IDrawingStage extends Document {
 	drawingName: string;
 	drawingStage: string;
-	drawingDetails: string
+	drawingDetails: string;
 	drawingDescription: string;
-	drawingTask: ITask[];
+	drawingTaskId: [{ taskId: string }];
 	drawingProjectId: { projectId: string };
 }
 
@@ -32,7 +30,7 @@ const drawingStageSchema: Schema<IDrawingStage> = new mongoose.Schema({
 		type: String,
 		index: true,
 	},
-	drawingTask: [taskSchema],
+	drawingTaskId: [{ taskId: String }],
 	drawingProjectId: { projectId: String },
 }, {timestamps: true});
 
