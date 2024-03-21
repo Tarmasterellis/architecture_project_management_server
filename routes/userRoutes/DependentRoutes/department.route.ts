@@ -1,8 +1,8 @@
 // Express
 import express from "express";
 // Custom Controllers
-import { authorizeRoles, isAuthenticated } from "../middleware/auth";
-import { getAllDepartments, createDepartment, updateDepartment, deleteDepartment, getDepartmentById } from "../controllers/department.controller";
+import { authorizeRoles, isAuthenticated } from "../../../middleware/auth";
+import { getAllDepartments, createDepartment, updateDepartment, deleteDepartment, getDepartmentById } from "../../../controllers/userController/DependentControllers/department.controller";
 
 const departmentRouter = express.Router();
 

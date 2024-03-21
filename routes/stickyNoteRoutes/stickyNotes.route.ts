@@ -1,8 +1,8 @@
 // Express
 import express from "express";
-import { authorizeRoles, isAuthenticated } from "../middleware/auth";
+import { authorizeRoles, isAuthenticated } from "../../middleware/auth";
 // Custom Controllers
-import { getAllStickyNotesOfUser, createStickyNote, updateStickyNote, deleteStickyNote, getStickyNoteOfUser } from "../controllers/stickyNotes.controller";
+import { getAllStickyNotesOfUser, createStickyNote, updateStickyNote, deleteStickyNote, getStickyNoteOfUser } from "../../controllers/stickyNoteController/stickyNotes.controller";
 
 const stickyNoteRouter = express.Router();
 

@@ -1,9 +1,9 @@
 // Express
 import express from "express";
 // Role Based Authentication
-import { authorizeRoles, isAuthenticated } from "../middleware/auth";
+import { authorizeRoles, isAuthenticated } from "../../middleware/auth";
 // Custom Controllers
-import { changePassword, deleteUser, getAllUsers, getUserInfo, updateUser, updateUserRole, userActivation, userLogin, userLogout, userRegistration } from "../controllers/user.controller";
+import { changePassword, deleteUser, getAllUsers, getUserInfo, updateUser, updateUserRole, userActivation, userLogin, userLogout, userRegistration } from "../../controllers/userController/user.controller";
 
 const userRouter = express.Router();
 
