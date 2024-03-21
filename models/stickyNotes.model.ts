@@ -15,10 +15,10 @@ const stickyNotesSchema: Schema<IStickyNotes> = new mongoose.Schema({
 	noteTitle: {
 		type: String,
 	},
-    noteText: {
+	noteText: {
 		type: String,
 	},
-    userId: {
+	userId: {
 		type: String,
 		required: [true, "Missing Who does this sticky note belong to, I mean User ID is Missing...!"]
 	},

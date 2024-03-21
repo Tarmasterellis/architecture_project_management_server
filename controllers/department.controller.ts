@@ -66,13 +66,13 @@ export const updateDepartment = CatchAsyncError(async (req: Request, res: Respon
 
 // Delete Department
 export const deleteDepartment = CatchAsyncError(async (req: Request, res: Response, next: NextFunction) => {
-    try
-    {
-        const { id } = req.params;
-        deleteDepartmentService(id, res, next);
-    }
-    catch (error: any)
-    {
-        return next(new ErrorHandler(error.message, 400));
-    }
+	try
+	{
+		const { id } = req.params;
+		deleteDepartmentService(id, res, next);
+	}
+	catch (error: any)
+	{
+		return next(new ErrorHandler(error.message, 400));
+	}
 });

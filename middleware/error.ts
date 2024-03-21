@@ -18,17 +18,17 @@ export const ErrorMiddleware = (error: any, request: Request, response: Response
 		error = new ErrorHandler(message, 400);
 	}
 
-	// // Wrong Json Web Token
-	// if(error.name == 'JsonWebTokenError') {
-	// 	const message = `Are you sure you are an authorized person...?`;
-	// 	error = new ErrorHandler(message, 400);
-	// }
+	// Wrong Json Web Token
+	if(error.name == 'JsonWebTokenError') {
+		const message = `Are you sure you are an authorized person...?`;
+		error = new ErrorHandler(message, 400);
+	}
 
-	// // Expired Json Web Token
-	// if(error.name == 'TokenExipredError') {
-	// 	const message = `Login Again please, your token expired...!`;
-	// 	error = new ErrorHandler(message, 400);
-	// }
+	// Expired Json Web Token
+	if(error.name == 'TokenExipredError') {
+		const message = `Login Again please, your token expired...!`;
+		error = new ErrorHandler(message, 400);
+	}
 
 	response.status(error.statusCode).json({
 		success: false,
