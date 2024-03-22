@@ -6,7 +6,7 @@ import mongoose, { Document, Schema, Model } from "mongoose";
 export interface ITask extends Document {
 	taskName: string;
 	taskType: string;
-	taskDetails: string
+	taskDetails: string;
 	taskDescription: string;
 	taskProjectId: { projectId: string };
 	taskdrawingId: { drawingId: string };

@@ -12,6 +12,7 @@ import { ErrorMiddleware } from './middleware/error';
 import userRouter from "./routes/userRoutes/user.route";
 import stickyNoteRouter from "./routes/stickyNoteRoutes/stickyNotes.route";
 import typeRouter from "./routes/projectRoutes/DependentRoutes/type.route";
+import taskRouter from "./routes/projectRoutes/DependentRoutes/task.route";
 import categoryRouter from "./routes/projectRoutes/DependentRoutes/category.route";
 import departmentRouter from "./routes/userRoutes/DependentRoutes/department.route";
 import drawingStageRouter from "./routes/projectRoutes/DependentRoutes/drawingStage.route";
@@ -48,7 +49,7 @@ const limiter = rateLimit({
 });
 
 // Routes
-app.use("/api/v1", userRouter, departmentRouter, stickyNoteRouter, categoryRouter, typeRouter, drawingStageRouter);
+app.use("/api/v1", userRouter, departmentRouter, stickyNoteRouter, categoryRouter, typeRouter, drawingStageRouter, taskRouter);
 // app.use("/api/v1", stickyNoteRouter);
 
 // test API
