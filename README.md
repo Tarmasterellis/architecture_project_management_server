@@ -32,11 +32,11 @@
 		- [ ] Favourites
 		- [ ] Downloads
 
-	- [ ] Manage categories
-		- [ ] Project category
-		- [ ] Project type
-		- [ ] Drawing stage
-		- [ ] Task type
+	- [x] ~~Manage categories~~
+		- [x] ~~Project category~~
+		- [x] ~~Project type~~
+		- [x] ~~Drawing stage~~
+		- [x] ~~Task type~~
 
 	- [ ] Reports
 		- [ ] Storage report
