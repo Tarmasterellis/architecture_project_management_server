@@ -53,12 +53,12 @@ export const deleteTypeService = async (req: Request, res: Response, next: NextF
 	const { id } = req.params;	
 	const type = await typeModel.findById(id);
 
-	if(!type) return next(new ErrorHandler("Oops, Category you are looking for is already deleted...!", 404));
+	if(!type) return next(new ErrorHandler("Oops, Type you are looking for is already deleted...!", 404));
 	
 	if(type?.typeProjectId === req.body.user?._id.toString() || req.body.user?.role === "admin")
 	{
 		await type.deleteOne({id});
-		res.status(201).json({ success: true, message: "Category Deleted Successfully...!" });
+		res.status(201).json({ success: true, message: "Type Deleted Successfully...!" });
 	}
 	else res.status(400).json({success: false, message: "You are not Authorized to access this area, if this is a mistake, Please Contact admin for solution...!"});
 }
