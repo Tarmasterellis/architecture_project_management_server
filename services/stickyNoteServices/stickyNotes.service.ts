@@ -2,12 +2,11 @@
 import ErrorHandler from "../../utils/ErrorHandler";
 // Express
 import { NextFunction, Request, Response } from "express";
-// Services
-import { updateUserService } from "../userServices/user.service";
 // Custom Async Error Middleware
 import { CatchAsyncError } from "../../middleware/catchAsyncErrors";
 // Models
-import stickyNotesModel, { IStickyNotes } from "../../models/stickyNoteModels/stickyNotes.model";
+import userModel from "../../models/userModels/users.model";
+import stickyNotesModel from "../../models/stickyNoteModels/stickyNotes.model";
 
 
 // Get All Stick Note of user
@@ -30,7 +29,11 @@ export const getStickyNoteService = async (req: Request, res: Response, next: Ne
 export const createStickyNotesService = CatchAsyncError(async ( req: Request, res: Response, next: NextFunction ) => {
 	const { noteTitle, noteText, userId } = req.body;
 
+	const userIdCheck = await userModel.findById(userId);
+	
+	if(!userIdCheck) return res.status(404).json({ success: false, message: "Invalid User Id...!" });
 	const stickyNote = await stickyNotesModel.create({ noteTitle, noteText, userId });
+	await userModel.findByIdAndUpdate(userId,  {userStickyNotes: [stickyNote._id]}, { new: true });
 	res.status(200).json({ success: true, stickyNote, });
 });
 

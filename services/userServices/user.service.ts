@@ -15,6 +15,7 @@ import { CatchAsyncError } from "../../middleware/catchAsyncErrors";
 // JWT Token
 import { accessTokenOptions, refreshTokenOptions, sendToken } from "../../utils/jwt";
 // Models
+import departmentModel from "../../models/userModels/DependentModels/department.model";
 import userModel, { IUser, IUserLoginRequest, IActivationRequest, IRegistrationBody, IActivationToken, IChangePassword } from "../../models/userModels/users.model";
 
 
@@ -42,6 +43,11 @@ export const createUsersService = CatchAsyncError(async ( data: IUser, res: Resp
 // update User
 export const updateUserService = async (id: string, data: IUser, res: Response) => {
 	const user = await userModel.findByIdAndUpdate(id, data, { new: true });
+	if(data.userDepartmentId)
+	{
+		const departmentCheck = await departmentModel.findById(data.userDepartmentId);
+		if (!departmentCheck) return res.status(404).json({ success: false, message: "Invalid Deparement Id...!" });
+	}
 	if (!user) {
 		return res.status(404).json({ success: false, message: "User not found" });
 	}

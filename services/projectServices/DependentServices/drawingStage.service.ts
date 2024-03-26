@@ -27,19 +27,19 @@ export const getDrawingStageService = async (req: Request, res: Response, next: 
 
 // Create Drawing Stage
 export const createDrawingStageService = CatchAsyncError(async ( req: Request, res: Response, next: NextFunction ) => {
-	const { drawingName, drawingStage, drawingDetails, drawingDescription, drawingTaskId, drawingProjectId } = req.body;
+	const { drawingName, drawingStage, drawingDetails, drawingDescription, drawingTaskId } = req.body;
 
-	const drawingStages = await drawingModel.create({ drawingName, drawingStage, drawingDetails, drawingDescription, drawingTaskId, drawingProjectId });
+	const drawingStages = await drawingModel.create({ drawingName, drawingStage, drawingDetails, drawingDescription, drawingTaskId });
 	res.status(200).json({ success: true, drawingStages, });
 });
 
 
 // update Drawing Stage
 export const updateDrawingStageService = async (req: Request, res: Response, next: NextFunction) => {
-	const { drawingName, drawingStage, drawingDetails, drawingDescription, drawingTaskId, drawingProjectId } = req.body;
+	const { drawingName, drawingStage, drawingDetails, drawingDescription, drawingTaskId } = req.body;
 	const { id } = req.params;
 	const drawingStages = await drawingModel.findById(id);
-	if(drawingStages?.drawingProjectId === drawingProjectId || req.body.user?.role === "admin" || "manager" || "lead")
+	if(drawingStages?.drawingTaskId === drawingTaskId || req.body.user?.role === "admin" || "manager" || "lead")
 	{
 		const drawingStages = await drawingModel.findByIdAndUpdate(id, { drawingName, drawingStage, drawingDetails, drawingDescription }, { new: true });
 		res.status(201).json({ success: true, drawingStages, });
@@ -56,7 +56,7 @@ export const deleteDrawingStageService = async (req: Request, res: Response, nex
 
 	if(!drawingStage) return next(new ErrorHandler("Oops, Drawing Stage you are looking for is already deleted...!", 404));
 	
-	if(drawingStage?.drawingProjectId === req.body.user?._id.toString() || req.body.user?.role === "admin")
+	if(req.body.user?.role === "admin")
 	{
 		await drawingStage.deleteOne({id});
 		res.status(201).json({ success: true, message: "Drawing Stage Deleted Successfully...!" });

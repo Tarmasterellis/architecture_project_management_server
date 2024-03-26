@@ -10,7 +10,7 @@ const departmentAppend = '/department';
 const deleteAppend = '/delete';
 
 // Get Requests
-departmentRouter.get(`${departmentAppend}/:id`, isAuthenticated, getDepartmentById);
+departmentRouter.get(`${departmentAppend}/get/:id`, isAuthenticated, getDepartmentById);
 departmentRouter.get(`${departmentAppend}/all`, isAuthenticated, authorizeRoles("admin"), getAllDepartments);
 
 // Post Requests

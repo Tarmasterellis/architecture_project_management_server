@@ -5,8 +5,6 @@ import bcrypt from "bcryptjs";
 var crypto = require('crypto');
 // JWT Token
 import jwt from "jsonwebtoken";
-// Unique Validator Check of Mongoose
-var uniqueValidator = require('mongoose-unique-validator');
 // Mongoose Import
 import mongoose, { Document, Schema, Model } from "mongoose";
 
@@ -70,9 +68,9 @@ export interface IUser extends Document {
 	userSalt: string;
 	userProfilePhoto: string;
 	isVerified: boolean;
-	userDepartmentId: {departmentId: string};
-	userStickyNotes: Array<{stickyNoteId: string}>;
-	userProjectId: Array<{projectId: string}>;
+	userDepartmentId: { type: Schema.Types.ObjectId, ref: "departments" };
+	userStickyNotes: Array<{type: Schema.Types.ObjectId, ref: "stickynotes"}>;
+	userProjectId: Array<{type: Schema.Types.ObjectId, ref: "projects"}>;
 	comparePassword: (userPasswordHash: string) => Promise<boolean>;
 	SignInAccessToken: () => string;
 	SignInRefreshToken: () => string;
@@ -134,9 +132,9 @@ const userSchema: Schema<IUser> = new mongoose.Schema({
 		type: Boolean,
 		default: false
 	},
-	userDepartmentId: {departmentId: String},
-	userStickyNotes: [{stickyNoteId: String}],
-	userProjectId: [{projectId: String}]
+	userDepartmentId: { type: Schema.Types.ObjectId, ref: "departments" },
+	userStickyNotes: [{type: Schema.Types.ObjectId, ref: "stickynotes"}],
+	userProjectId: [{type: Schema.Types.ObjectId, ref: "projects"}],
 }, {timestamps: true});
 
 // Hashing Password before saving

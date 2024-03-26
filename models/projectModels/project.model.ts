@@ -13,11 +13,11 @@ export interface IProjectDetail extends Document {
 	projectStartDate: Date;
 	projectEndDate: Date;
 	projectStatus: string;
-	projectCategory: ICategory;
-	projectType: IType;
-	projectDrawingStage: IDrawingStage[];
-	projectTaskType: ITask[];
-	projectUserId: Array<{userId: string}>;
+	projectCategory: {type: Schema.Types.ObjectId, ref: "categories"};
+	projectTypeId: {type: Schema.Types.ObjectId, ref: "types"};
+	projectDrawingStageId: [{type: Schema.Types.ObjectId, ref: "drawingstages"}];
+	projectTaskId: [{type: Schema.Types.ObjectId, ref: "tasks"}];
+	projectUserId: [{type: Schema.Types.ObjectId, ref: "users"}];
 }
 
 
@@ -43,19 +43,11 @@ const projectDetailSchema: Schema<IProjectDetail> = new mongoose.Schema({
 		type: String,
 		index: true,
 	},
-	projectCategory: {
-		type: categorySchema,
-	},
-	projectType: {
-		type: typeSchema,
-	},
-	projectDrawingStage: {
-		type: [drawingStageSchema],
-	},
-	projectTaskType: {
-		type: [taskSchema],
-	},
-	projectUserId: [{ userId: String }],
+	projectCategory: {type: Schema.Types.ObjectId, ref: "categories"},
+	projectTypeId: {type: Schema.Types.ObjectId, ref: "types"},
+	projectDrawingStageId: [{type: Schema.Types.ObjectId, ref: "drawingstages"}],
+	projectTaskId: [{type: Schema.Types.ObjectId, ref: "tasks"}],
+	projectUserId: [{type: Schema.Types.ObjectId, ref: "users"}],
 }, {timestamps: true});
 
 // Model Creation
