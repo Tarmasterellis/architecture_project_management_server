@@ -8,8 +8,6 @@ export interface ITask extends Document {
 	taskType: string;
 	taskDetails: string;
 	taskDescription: string;
-	taskProjectId: { projectId: string };
-	taskdrawingId: { drawingId: string };
 }
 
 // task Schema Class
@@ -28,8 +26,6 @@ const taskSchema: Schema<ITask> = new mongoose.Schema({
 	taskDescription: {
 		type: String,
 	},
-	taskProjectId: { projectId: String },
-	taskdrawingId: { drawingId: String },
 }, {timestamps: true});
 
 // Model Creation

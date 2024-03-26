@@ -5,7 +5,7 @@ import mongoose, { Document, Schema, Model } from "mongoose";
 export interface IStickyNotes extends Document {
 	noteTitle: string;
 	noteText: string;
-	userId: string;
+	userId: { type: Schema.Types.ObjectId, ref: "users" };
 }
 
 // Schema Class
@@ -17,7 +17,8 @@ const stickyNotesSchema: Schema<IStickyNotes> = new mongoose.Schema({
 		type: String,
 	},
 	userId: {
-		type: String,
+		type: Schema.Types.ObjectId,
+		ref: "users",
 		required: [true, "Missing Who does this sticky note belong to, I mean User ID is Missing...!"]
 	},
 }, {timestamps: true});

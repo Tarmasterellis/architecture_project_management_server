@@ -7,8 +7,7 @@ export interface IDrawingStage extends Document {
 	drawingStage: string;
 	drawingDetails: string;
 	drawingDescription: string;
-	drawingTaskId: [{ taskId: string }];
-	drawingProjectId: { projectId: string };
+	drawingTaskId: [{type: Schema.Types.ObjectId, ref: "tasks"}];
 }
 
 // drawing Stage Schema Class
@@ -30,8 +29,7 @@ const drawingStageSchema: Schema<IDrawingStage> = new mongoose.Schema({
 		type: String,
 		index: true,
 	},
-	drawingTaskId: [{ taskId: String }],
-	drawingProjectId: { projectId: String },
+	drawingTaskId: [{type: Schema.Types.ObjectId, ref: "tasks"}],
 }, {timestamps: true});
 
 // Model Creation

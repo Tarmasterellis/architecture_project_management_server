@@ -10,6 +10,7 @@ import cookieParser from "cookie-parser";
 import { ErrorMiddleware } from './middleware/error';
 // Routes
 import userRouter from "./routes/userRoutes/user.route";
+import projectDetails from "./routes/projectRoutes/project.route";
 import stickyNoteRouter from "./routes/stickyNoteRoutes/stickyNotes.route";
 import typeRouter from "./routes/projectRoutes/DependentRoutes/type.route";
 import taskRouter from "./routes/projectRoutes/DependentRoutes/task.route";
@@ -49,7 +50,7 @@ const limiter = rateLimit({
 });
 
 // Routes
-app.use("/api/v1", userRouter, departmentRouter, stickyNoteRouter, categoryRouter, typeRouter, drawingStageRouter, taskRouter);
+app.use("/api/v1", userRouter, departmentRouter, stickyNoteRouter, categoryRouter, typeRouter, drawingStageRouter, taskRouter, projectDetails);
 // app.use("/api/v1", stickyNoteRouter);
 
 // test API
