@@ -10,7 +10,7 @@ const Append = '/sticky-note';
 const deleteAppend = '/delete';
 
 // Get Requests
-stickyNoteRouter.get(`${Append}/:id`, isAuthenticated, getStickyNoteOfUser);
+stickyNoteRouter.get(`${Append}/get/:id`, isAuthenticated, getStickyNoteOfUser);
 stickyNoteRouter.get(`${Append}/all`, isAuthenticated, getAllStickyNotesOfUser);
 
 // Post Requests

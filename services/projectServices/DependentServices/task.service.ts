@@ -26,19 +26,18 @@ export const getTaskService = async (req: Request, res: Response, next: NextFunc
 
 // Create Task
 export const createTaskService = CatchAsyncError(async ( req: Request, res: Response, next: NextFunction ) => {
-	const { taskName, taskType, taskDetails, taskDescription, taskProjectId, taskdrawingId } = req.body;
+	const { taskName, taskType, taskDetails, taskDescription } = req.body;
 
-	const task = await taskModel.create({ taskName, taskType, taskDetails, taskDescription, taskProjectId, taskdrawingId });
+	const task = await taskModel.create({ taskName, taskType, taskDetails, taskDescription });
 	res.status(200).json({ success: true, task, });
 });
 
 
 // update Task
 export const updateTaskService = async (req: Request, res: Response, next: NextFunction) => {
-	const { taskName, taskType, taskDetails, taskDescription, taskProjectId, taskdrawingId } = req.body;
+	const { taskName, taskType, taskDetails, taskDescription } = req.body;
 	const { id } = req.params;
-	const task = await taskModel.findById(id);
-	if(task?.taskProjectId === taskProjectId || req.body.user?.role === "admin" || "manager" || "lead")
+	if(req.body.user?.role === "admin" || "manager" || "lead")
 	{
 		const task = await taskModel.findByIdAndUpdate(id, { taskName, taskType, taskDetails, taskDescription }, { new: true });
 		res.status(201).json({ success: true, task, });
@@ -55,7 +54,7 @@ export const deleteTaskService = async (req: Request, res: Response, next: NextF
 
 	if(!task) return next(new ErrorHandler("Oops, Task you are looking for is already deleted...!", 404));
 	
-	if(task?.taskProjectId === req.body.user?._id.toString() || req.body.user?.role === "admin")
+	if(req.body.user?.role === "admin")
 	{
 		await task.deleteOne({id});
 		res.status(201).json({ success: true, message: "Task Deleted Successfully...!" });

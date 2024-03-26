@@ -9,6 +9,7 @@
 - Module Description
 	- [x] ~~Users~~
 	- [x] ~~Departments~~
+	- [x] ~~Projects~~
 	- [ ] To do List
 		- [ ] Master to do list
 		- [ ] Project to do list
@@ -32,7 +33,7 @@
 		- [ ] Favourites
 		- [ ] Downloads
 
-	- [x] ~~Manage categories~~
+	- [x] ~~Manage categories of Projects~~
 		- [x] ~~Project category~~
 		- [x] ~~Project type~~
 		- [x] ~~Drawing stage~~

@@ -6,7 +6,6 @@ import mongoose, { Document, Schema, Model } from "mongoose";
 export interface ICategory extends Document {
 	projectCategory: string;
 	categoryDescription: string;
-	categoryProjectId: { projectId: string };
 }
 
 // Schema Class
@@ -19,7 +18,6 @@ const categorySchema: Schema<ICategory> = new mongoose.Schema({
 		type: String,
 		index: true,
 	},
-	categoryProjectId: { projectId: String },
 }, {timestamps: true});
 
 // Model Creation
